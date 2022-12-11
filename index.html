@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RESTAURANT</title>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="loader"></div>
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">RESTAURANT</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">RESTAURANT</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                Beverages
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <ul style="margin-top: 4rem;" class="nav">
+    <li class="nav-item me-auto mb-2 mb-lg-0">
+      <a class="nav-link text-dark " href="#"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark"><i class="fa-solid fa-phone-volume"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark"><i class="fa-solid fa-circle-info"></i></a>
+    </li>
+  </ul>
+  <ul class="nav">
+    <li class="nav-item me-auto mb-2 mb-lg-0">
+      <a class="nav-link text-dark " href="#"><i class="fa-solid fa-truck"></i><span
+          style="margin: 1em;">Mode</span><br><span style="margin: 2em;">Delivery</span></a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-dark"><i class="fa-solid fa-money-bills"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark">Minimum Order <br><i class="fa-solid fa-indian-rupee-sign"></i><span
+          class="m-1">500.00</span></a>
+    </li>
+  </ul>
+  <ul style="background-color: whitesmoke;top: 3.3rem;padding-right: 0.5em;" class="nav sticky-top">
+    <li class="nav-item me-auto mb-2 mb-lg-0">
+
+    </li>
+
+    <li class="nav-item">
+      <div class="form-check form-switch">
+        <input class="form-check-input" name="check" onclick="veg()" type="checkbox" role="switch" id="veg">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Veg</label>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="form-check form-switch ms-3">
+        <input class="form-check-input" name="check" onclick="nonveg()" type="checkbox" role="switch" id="nonveg">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Non Veg</label>
+      </div>
+    </li>
+  </ul>
+  <!-- end of nav -->
+
+  <div style="margin-bottom: 5rem;">
+      <ul class="nav">
+        <li class="nav-item me-auto mb-2 mb-lg-0">
+          <a class="nav-link text-dark " id="<%=categories[i]._id%>" href="#"><span>
+              <h5>
+                Beverages
+                  </h3>
+            </span></a>
+        </li>
+      </ul>
+
+        <div class="card m-3 shadow <%=categories[i].result[j].veg%>" style="display: block;">
+          <div class="card-body">
+            <div style="justify-content: flex-start; display: flex;">
+                <i class="fa-regular fa-circle-stop text-success"></i>
+                    <p style="margin-inline: 1em; font-weight: 500;">
+                      Pepsi
+                    </p>
+                    <div style="margin-left: auto;"><i class="fa-solid fa-indian-rupee-sign"></i><span>
+                        40
+                      </span></div>
+            </div>
+
+            <div style="display: flex;">
+              <p style="font-size: smaller; display: flex;">
+                500 ml
+              </p>
+                <button style="margin-left: auto;display: block;" type="button" id='add<%=categories[i].result[j]._id%>'
+                  onclick="hide('<%=categories[i].result[j]._id%>','40','Pepsi')"
+                  class="btn btn-outline-success">Add <span>+</span></button>
+
+
+
+                    <button style="margin-left: auto; display: none;" id="add-num<%=categories[i].result[j]._id%>"
+                      type="button" class="btn btn-outline-success">
+                      <form>
+                        <div style="display:flex;">
+                          <div style="width: 1.5rem;height: 1.5rem;" id="decrease"
+                            onclick="decreaseValue('<%=categories[i].result[j]._id%>','40')"
+                            value="Decrease Value">-</div>
+                          <div style="width: 2rem;height: 1.5rem;border: none;"
+                            id="number<%=categories[i].result[j]._id%>"></div>
+                          <div style="width: 1.5rem;height: 1.5rem;" id="increase"
+                            onclick="increaseValue('<%=categories[i].result[j]._id%>','40')"
+                            value="Increase Value">+</div>
+                        </div>
+                      </form>
+                    </button>
+
+            </div>
+          </div>
+        </div>
+        <div class="card m-3 shadow <%=categories[i].result[j].veg%>" style="display: block;">
+            <div class="card-body">
+              <div style="justify-content: flex-start; display: flex;">
+                  <i class="fa-regular fa-circle-stop text-success"></i>
+                      <p style="margin-inline: 1em; font-weight: 500;">
+                      cola
+                      </p>
+                      <div style="margin-left: auto;"><i class="fa-solid fa-indian-rupee-sign"></i><span>
+                          45
+                        </span></div>
+              </div>
+  
+              <div style="display: flex;">
+                <p style="font-size: smaller; display: flex;">
+                  500 ml
+                </p>
+                  <button style="margin-left: auto;display: block;" type="button" id='add<%=categories[i].result[j]._id%>'
+                    onclick="hide('<%=categories[i].result[j]._id%>','45','cola')"
+                    class="btn btn-outline-success">Add <span>+</span></button>
+  
+  
+  
+                      <button style="margin-left: auto; display: none;" id="add-num<%=categories[i].result[j]._id%>"
+                        type="button" class="btn btn-outline-success">
+                        <form>
+                          <div style="display:flex;">
+                            <div style="width: 1.5rem;height: 1.5rem;" id="decrease"
+                              onclick="decreaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Decrease Value">-</div>
+                            <div style="width: 2rem;height: 1.5rem;border: none;"
+                              id="number<%=categories[i].result[j]._id%>"></div>
+                            <div style="width: 1.5rem;height: 1.5rem;" id="increase"
+                              onclick="increaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Increase Value">+</div>
+                          </div>
+                        </form>
+                      </button>
+  
+              </div>
+            </div>
+          </div>
+          <div class="card m-3 shadow <%=categories[i].result[j].veg%>" style="display: block;">
+            <div class="card-body">
+              <div style="justify-content: flex-start; display: flex;">
+                  <i class="fa-regular fa-circle-stop text-success"></i>
+                      <p style="margin-inline: 1em; font-weight: 500;">
+                      Apple juice
+                      </p>
+                      <div style="margin-left: auto;"><i class="fa-solid fa-indian-rupee-sign"></i><span>
+                          150
+                        </span></div>
+              </div>
+  
+              <div style="display: flex;">
+                <p style="font-size: smaller; display: flex;">
+                  500 ml
+                </p>
+                  <button style="margin-left: auto;display: block;" type="button" id='add<%=categories[i].result[j]._id%>'
+                    onclick="hide('<%=categories[i].result[j]._id%>','150','Apple juice')"
+                    class="btn btn-outline-success">Add <span>+</span></button>
+  
+  
+  
+                      <button style="margin-left: auto; display: none;" id="add-num<%=categories[i].result[j]._id%>"
+                        type="button" class="btn btn-outline-success">
+                        <form>
+                          <div style="display:flex;">
+                            <div style="width: 1.5rem;height: 1.5rem;" id="decrease"
+                              onclick="decreaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Decrease Value">-</div>
+                            <div style="width: 2rem;height: 1.5rem;border: none;"
+                              id="number<%=categories[i].result[j]._id%>"></div>
+                            <div style="width: 1.5rem;height: 1.5rem;" id="increase"
+                              onclick="increaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Increase Value">+</div>
+                          </div>
+                        </form>
+                      </button>
+  
+              </div>
+            </div>
+          </div>
+          <div class="card m-3 shadow <%=categories[i].result[j].veg%>" style="display: block;">
+            <div class="card-body">
+              <div style="justify-content: flex-start; display: flex;">
+                  <i class="fa-regular fa-circle-stop text-success"></i>
+                      <p style="margin-inline: 1em; font-weight: 500;">
+                        Orange Juice
+                      </p>
+                      <div style="margin-left: auto;"><i class="fa-solid fa-indian-rupee-sign"></i><span>
+                          70
+                        </span></div>
+              </div>
+  
+              <div style="display: flex;">
+                <p style="font-size: smaller; display: flex;">
+                  500 ml
+                </p>
+                  <button style="margin-left: auto;display: block;" type="button" id='add<%=categories[i].result[j]._id%>'
+                    onclick="hide('<%=categories[i].result[j]._id%>','70','Orange Juice')"
+                    class="btn btn-outline-success">Add <span>+</span></button>
+  
+  
+  
+                      <button style="margin-left: auto; display: none;" id="add-num<%=categories[i].result[j]._id%>"
+                        type="button" class="btn btn-outline-success">
+                        <form>
+                          <div style="display:flex;">
+                            <div style="width: 1.5rem;height: 1.5rem;" id="decrease"
+                              onclick="decreaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Decrease Value">-</div>
+                            <div style="width: 2rem;height: 1.5rem;border: none;"
+                              id="number<%=categories[i].result[j]._id%>"></div>
+                            <div style="width: 1.5rem;height: 1.5rem;" id="increase"
+                              onclick="increaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Increase Value">+</div>
+                          </div>
+                        </form>
+                      </button>
+  
+              </div>
+            </div>
+          </div>
+          <div class="card m-3 shadow <%=categories[i].result[j].veg%>" style="display: block;">
+            <div class="card-body">
+              <div style="justify-content: flex-start; display: flex;">
+                  <i class="fa-regular fa-circle-stop text-success"></i>
+                      <p style="margin-inline: 1em; font-weight: 500;">
+                        Grape Juice
+                      </p>
+                      <div style="margin-left: auto;"><i class="fa-solid fa-indian-rupee-sign"></i><span>
+                          80
+                        </span></div>
+              </div>
+  
+              <div style="display: flex;">
+                <p style="font-size: smaller; display: flex;">
+                  500 ml
+                </p>
+                  <button style="margin-left: auto;display: block;" type="button" id='add<%=categories[i].result[j]._id%>'
+                    onclick="hide('<%=categories[i].result[j]._id%>','80','Grape Juice')"
+                    class="btn btn-outline-success">Add <span>+</span></button>
+  
+  
+  
+                      <button style="margin-left: auto; display: none;" id="add-num<%=categories[i].result[j]._id%>"
+                        type="button" class="btn btn-outline-success">
+                        <form>
+                          <div style="display:flex;">
+                            <div style="width: 1.5rem;height: 1.5rem;" id="decrease"
+                              onclick="decreaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Decrease Value">-</div>
+                            <div style="width: 2rem;height: 1.5rem;border: none;"
+                              id="number<%=categories[i].result[j]._id%>"></div>
+                            <div style="width: 1.5rem;height: 1.5rem;" id="increase"
+                              onclick="increaseValue('<%=categories[i].result[j]._id%>','40')"
+                              value="Increase Value">+</div>
+                          </div>
+                        </form>
+                      </button>
+  
+              </div>
+            </div>
+          </div>
+  </div>
+
+  <div class="fixed-bottom">
+    <div>
+      <i class="fa-solid fa-bag-shopping" style="font-size: 3rem;padding: 0.5rem;"></i>
+      <span class='badge badge-warning' id='lblCartCount'></span>
+    </div>
+    <div class="me-auto">
+      <div style="font-size: 1.3rem;padding-top: 0.3rem;font-weight: 500;">Subtotal:<i
+          class="fa-solid fa-indian-rupee-sign" style="font-size: 0.8rem; padding: 1px;"></i><span id="total"></span>
+      </div>
+      <div style="color: grey;">Extra charges may apply</div>
+    </div>
+    <div><button class="btn btn-success" style="margin-top: 10px;" onclick="ordersummary()">Order Summary</button></div>
+  </div>
+
+  <div style="width: 100%;position: fixed;bottom: 4rem;display: none;" id="orderSummary">
+    <div class="shadow p-3 m-2 bg-white rounded">
+      <div>
+        <h3>Order Summary</h3>
+      </div>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Items</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="mytbody">
+
+          </tbody>
+        </table>
+      </div>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    var count = 0;
+    var total = 0
+    function increaseValue(id, price) {
+      var value = parseInt(document.getElementById('number' + id).innerText)
+      value++;
+      count++;
+      total += parseInt(price);
+      document.getElementById('total').innerText = total;
+      document.getElementById('number' + id).innerText = value;
+      document.getElementById('quantity' + id).innerText = value
+      const objIndex = orderData.findIndex(obj => obj.id == id)
+      orderData[objIndex].quantity = value
+      orderData[objIndex].price = parseInt(price) * value
+      document.getElementById('price' + id).innerText = parseInt(price) * value
+      document.getElementById('lblCartCount').innerText = count;
+      if (value > 0) {
+        document.getElementById('lblCartCount').innerText = count;
+      }
+    }
+
+    function decreaseValue(id, price) {
+      var value = parseInt(document.getElementById('number' + id).innerText);
+      if (value <= 1) {
+        document.getElementById('add-num' + id).style.display = 'none';
+        document.getElementById('add' + id).style.display = 'block';
+        document.getElementById('row' + id).remove()
+        const objIndex = orderData.findIndex(obj => obj.id == id)
+        orderData.splice(objIndex, 1)
+        count--;
+        total -= parseInt(price);
+        document.getElementById('total').innerText = total;
+        document.getElementById('lblCartCount').innerText = count;
+      } else {
+        value--;
+        count--;
+        total -= parseInt(price);
+        document.getElementById('total').innerText = total;
+        document.getElementById('number' + id).innerText = value;
+        document.getElementById('quantity' + id).innerText = value
+        document.getElementById('price' + id).innerText = parseInt(price) * value
+        document.getElementById('lblCartCount').innerText = count;
+
+        const objIndex = orderData.findIndex(obj => obj.id == id)
+        orderData[objIndex].quantity = value
+        orderData[objIndex].price = parseInt(price) * value
+      }
+    }
+
+    function hide(id, price, name) {
+      document.getElementById('add-num' + id).style.display = 'block';
+      document.getElementById('add' + id).style.display = 'none';
+      count++;
+      total += parseInt(price);
+      document.getElementById('total').innerText = total;
+      document.getElementById('lblCartCount').innerText = count;
+      document.getElementById('number' + id).innerText = 1
+
+      var tableRow = document.createElement('TR')
+      tableRow.setAttribute('id', 'row' + id)
+      document.getElementById('mytbody').appendChild(tableRow)
+      var tableData = document.createElement('TD')
+      var quantity = 1
+      var tablePrice = document.createElement('TD')
+      tablePrice.setAttribute('id', 'price' + id)
+      var productPrice = price
+      var tableQuantity = document.createElement('TD')
+      tableQuantity.setAttribute('id', 'quantity' + id)
+      tableQuantity.innerHTML = quantity
+      tableData.innerHTML = name
+      tablePrice.innerHTML = productPrice
+      tableRow.appendChild(tableData)
+      tableRow.appendChild(tableQuantity)
+      tableRow.appendChild(tablePrice)
+      const obj = {}
+      obj['id'] = id
+      obj['name'] = name
+      obj['quantity'] = quantity
+      obj['price'] = price
+      orderData.push(obj)
+    }
+
+    var orderData = []
+
+    function checkout() {
+      const obj = {}
+      obj['total'] = total
+      orderData.push(obj)
+      $.ajax({
+        url: '/checkout',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(orderData)
+      })
+    }
+
+    function veg() {
+      document.getElementById('nonveg').checked = false
+      const elems = document.getElementsByClassName("false")
+      for (let i = 0; i < elems.length; i++) {
+        elems[i].style.display = 'none'
+      }
+      const displayelems = document.getElementsByClassName("true")
+      for (let i = 0; i < displayelems.length; i++) {
+        displayelems[i].style.display = 'block'
+      }
+
+      if (document.getElementById('nonveg').checked == false && document.getElementById('veg').checked == false) {
+        const displayelems = document.getElementsByClassName("true")
+        for (let i = 0; i < displayelems.length; i++) {
+          displayelems[i].style.display = 'block'
+        }
+        const elems = document.getElementsByClassName("false")
+        for (let i = 0; i < elems.length; i++) {
+          elems[i].style.display = 'block'
+        }
+      }
+    }
+
+    function nonveg() {
+      document.getElementById('veg').checked = false
+      const elems = document.getElementsByClassName("true")
+      for (let i = 0; i < elems.length; i++) {
+        elems[i].style.display = 'none'
+      }
+      const displayelems = document.getElementsByClassName("false")
+      for (let i = 0; i < displayelems.length; i++) {
+        displayelems[i].style.display = 'block'
+      }
+      if (document.getElementById('nonveg').checked == false && document.getElementById('veg').checked == false) {
+        const displayelems = document.getElementsByClassName("true")
+        for (let i = 0; i < displayelems.length; i++) {
+          displayelems[i].style.display = 'block'
+        }
+        const elems = document.getElementsByClassName("false")
+        for (let i = 0; i < elems.length; i++) {
+          elems[i].style.display = 'block'
+        }
+      }
+
+    }
+    function ordersummary() {
+      const style = (document.getElementById('orderSummary').style.display == 'none') ? 'block' : 'none'
+      document.getElementById('orderSummary').style.display = style;
+    }
+
+  </script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('loader-hidden');
+      loader.addEventListener('transitioned', () => {
+        document.body.removeChild('loader');
+      })
+    })
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
